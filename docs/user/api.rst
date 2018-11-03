@@ -1,23 +1,26 @@
 .. _User API Doc:
 
-.. currentmodule:: ciscosparkapi
+.. currentmodule:: webexteamssdk
 
 ============
 User API Doc
 ============
 
 
-Main Interface
-==============
+WebexTeamsAPI
+=============
 
-All of the API calls have been wrapped and hierarchically organized underneath
-a single :class:`CiscoSparkAPI` class.
+The :class:`WebexTeamsAPI` class creates "connection objects" for working with the Webex Teams APIs and hierarchically organizes the Webex Teams APIs and their endpoints underneath these connection objects.
 
-.. autoclass:: CiscoSparkAPI()
+
+.. include:: api_structure_table.rst
+
+
+.. autoclass:: WebexTeamsAPI()
     :members:
-    :exclude-members: access_token, base_url, timeout
+    :exclude-members: access_token, base_url
 
-    .. automethod:: CiscoSparkAPI.__init__
+    .. automethod:: WebexTeamsAPI.__init__
 
 
 .. _people:
@@ -25,7 +28,7 @@ a single :class:`CiscoSparkAPI` class.
 people
 ------
 
-.. autoclass:: PeopleAPI()
+.. autoclass:: webexteamssdk.api.people.PeopleAPI()
 
 
 .. _rooms:
@@ -33,7 +36,7 @@ people
 rooms
 -----
 
-.. autoclass:: RoomsAPI()
+.. autoclass:: webexteamssdk.api.rooms.RoomsAPI()
 
 
 .. _memberships:
@@ -41,7 +44,7 @@ rooms
 memberships
 -----------
 
-.. autoclass:: MembershipsAPI()
+.. autoclass:: webexteamssdk.api.memberships.MembershipsAPI()
 
 
 .. _messages:
@@ -49,7 +52,7 @@ memberships
 messages
 --------
 
-.. autoclass:: MessagesAPI()
+.. autoclass:: webexteamssdk.api.messages.MessagesAPI()
 
 
 .. _teams:
@@ -57,7 +60,7 @@ messages
 teams
 -----
 
-.. autoclass:: TeamsAPI()
+.. autoclass:: webexteamssdk.api.teams.TeamsAPI()
 
 
 .. _team_memberships:
@@ -65,7 +68,7 @@ teams
 team_memberships
 ----------------
 
-.. autoclass:: TeamMembershipsAPI()
+.. autoclass:: webexteamssdk.api.team_memberships.TeamMembershipsAPI()
 
 
 .. _webhooks:
@@ -73,7 +76,7 @@ team_memberships
 webhooks
 --------
 
-.. autoclass:: WebhooksAPI()
+.. autoclass:: webexteamssdk.api.webhooks.WebhooksAPI()
 
 
 .. _organizations:
@@ -81,7 +84,7 @@ webhooks
 organizations
 -------------
 
-.. autoclass:: OrganizationsAPI()
+.. autoclass:: webexteamssdk.api.organizations.OrganizationsAPI()
 
 
 .. _licenses:
@@ -89,7 +92,7 @@ organizations
 licenses
 --------
 
-.. autoclass:: LicensesAPI()
+.. autoclass:: webexteamssdk.api.licenses.LicensesAPI()
 
 
 .. _roles:
@@ -97,7 +100,15 @@ licenses
 roles
 -----
 
-.. autoclass:: RolesAPI()
+.. autoclass:: webexteamssdk.api.roles.RolesAPI()
+
+
+.. _events:
+
+events
+------
+
+.. autoclass:: webexteamssdk.api.events.EventsAPI()
 
 
 .. _access_tokens:
@@ -105,23 +116,13 @@ roles
 access_tokens
 -------------
 
-.. autoclass:: AccessTokensAPI()
+.. autoclass:: webexteamssdk.api.access_tokens.AccessTokensAPI()
 
 
-.. _Exceptions:
+.. _Webex Teams Data Objects:
 
-Exceptions
-==========
-
-.. autoexception:: ciscosparkapiException
-
-.. autoexception:: SparkApiError
-
-
-.. _Spark Data Objects:
-
-Spark Data Objects
-==================
+Webex Teams Data Objects
+========================
 
 
 .. _Person:
@@ -130,6 +131,7 @@ Person
 ------
 
 .. autoclass:: Person()
+    :inherited-members:
 
 
 .. _Room:
@@ -138,6 +140,7 @@ Room
 ----
 
 .. autoclass:: Room()
+    :inherited-members:
 
 
 .. _Membership:
@@ -146,6 +149,7 @@ Membership
 ----------
 
 .. autoclass:: Membership()
+    :inherited-members:
 
 
 .. _Message:
@@ -154,6 +158,7 @@ Message
 -------
 
 .. autoclass:: Message()
+    :inherited-members:
 
 
 .. _Team:
@@ -162,6 +167,7 @@ Team
 ----
 
 .. autoclass:: Team()
+    :inherited-members:
 
 
 .. _Team Membership:
@@ -170,6 +176,7 @@ Team Membership
 ---------------
 
 .. autoclass:: TeamMembership()
+    :inherited-members:
 
 
 .. _Webhook:
@@ -178,6 +185,16 @@ Webhook
 -------
 
 .. autoclass:: Webhook()
+    :inherited-members:
+
+
+.. _WebhookEvent:
+
+Webhook Event
+-------------
+
+.. autoclass:: WebhookEvent()
+    :inherited-members:
 
 
 .. _Organization:
@@ -186,6 +203,7 @@ Organization
 ------------
 
 .. autoclass:: Organization()
+    :inherited-members:
 
 
 .. _License:
@@ -194,6 +212,7 @@ License
 -------
 
 .. autoclass:: License()
+    :inherited-members:
 
 
 .. _Role:
@@ -202,6 +221,16 @@ Role
 ----
 
 .. autoclass:: Role()
+    :inherited-members:
+
+
+.. _Event:
+
+Event
+-----
+
+.. autoclass:: Event()
+    :inherited-members:
 
 
 .. _Access Token:
@@ -210,6 +239,43 @@ Access Token
 ------------
 
 .. autoclass:: AccessToken()
+    :inherited-members:
 
 
-*Copyright (c) 2016 Cisco Systems, Inc.*
+.. _Exceptions:
+
+Exceptions
+==========
+
+.. autoexception:: webexteamssdkException()
+    :show-inheritance:
+    :members:
+
+.. autoexception:: AccessTokenError()
+    :show-inheritance:
+    :members:
+
+.. autoexception:: ApiError()
+    :show-inheritance:
+    :members:
+
+.. autoexception:: MalformedResponse()
+    :show-inheritance:
+    :members:
+
+.. autoexception:: RateLimitError()
+    :show-inheritance:
+    :members:
+
+
+.. _Warnings:
+
+Warnings
+========
+
+.. autoexception:: RateLimitWarning()
+    :show-inheritance:
+    :members:
+
+
+*Copyright (c) 2016-2018 Cisco and/or its affiliates.*

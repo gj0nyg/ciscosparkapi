@@ -1,9 +1,7 @@
--e .
 versioneer
-Sphinx
+Sphinx>=1.8.0
 sphinx-rtd-theme
 pytest
-tox
-virtualenv
 flake8
 twine
+ipython
